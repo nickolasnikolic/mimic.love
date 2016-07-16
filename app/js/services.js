@@ -1,4 +1,4 @@
-nonoApp
+mimicApp
   .factory( 'LoverRegistryService', function(){
       var registry = {};
 

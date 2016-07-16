@@ -1,4 +1,4 @@
-var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter'])
+var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filter'])
   .config(['$stateProvider',
     function($stateProvider) {
       $stateProvider
@@ -85,5 +85,52 @@ var nonoApp = angular.module('nono', ['ui.router', 'ngSanitize', 'angular.filter
           console.log('rating');
         }
       })
+
+      .state('blog', {
+        url: '/blog',
+        templateUrl: 'templates/blog.html',
+        controller: 'BlogController',
+        onEnter: function($state) {
+          console.log('blog');
+        }
+      })
+
+
+          .state('postjob', {
+            url: '/post-job',
+            templateUrl: 'templates/post-job.html',
+            controller: 'PostJobController',
+            onEnter: function($state) {
+              console.log('post-job');
+            }
+          })
+
+
+          .state('findjob', {
+            url: '/find-job',
+            templateUrl: 'templates/find-job.html',
+            controller: 'FindJobController',
+            onEnter: function($state) {
+              console.log('find-job');
+            }
+          })
+
+          .state('talent', {
+            url: '/talent',
+            templateUrl: 'templates/talent.html',
+            controller: 'TalentController',
+            onEnter: function($state) {
+              console.log('talent');
+            }
+          })
+
+          .state('faq', {
+            url: '/faq',
+            templateUrl: 'templates/faq.html',
+            controller: 'FaqController',
+            onEnter: function($state) {
+              console.log('faq');
+            }
+          })
     }
   ]);

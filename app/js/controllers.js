@@ -1,4 +1,4 @@
-nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
+mimicApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
   //initial settings
   $scope.googleLogin = true;
   $scope.frozen = false;
@@ -78,8 +78,8 @@ nonoApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryService
 
 }])
 
-nonoApp.controller('HomeController', ['$scope', '$http', function($scope, $http) {
-  document.title = 'nono - home'; //set the page title
+mimicApp.controller('HomeController', ['$scope', '$http', function($scope, $http) {
+
   $scope.userCount = 0;
   $http.get('../api/home')
         .then(function(data){
@@ -91,8 +91,8 @@ nonoApp.controller('HomeController', ['$scope', '$http', function($scope, $http)
         });
 }])
 
-nonoApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
-  document.title = 'nono - profile'; //set the page title
+mimicApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryService', function($scope, $state, LoverRegistryService) {
+
   $scope.navigation = false;
   $scope.googleLogin = false;
   $scope.newLover = true;
@@ -116,8 +116,8 @@ nonoApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryServi
   };
 }])
 
-nonoApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistryService',  function($scope, $state, LoverRegistryService) {
-  document.title = 'nono - update profile'; //set the page title
+mimicApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistryService',  function($scope, $state, LoverRegistryService) {
+
 
   $scope.newLover = false;
   $scope.updateLover = true;
@@ -244,12 +244,12 @@ nonoApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistry
   };
 }])
 
-nonoApp.controller('SubscriptionController', ['$scope', function($scope){
-  document.title = 'nono - subscribe';
+mimicApp.controller('SubscriptionController', ['$scope', function($scope){
+
 }]);
 
-nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
-  document.title = 'nono - selection'; //set the page title
+mimicApp.controller('SelectionController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
+
   $scope.navigation = true;
   $scope.googleLogin = false;
 
@@ -364,8 +364,8 @@ nonoApp.controller('SelectionController', ['$scope', 'LoverRegistryService', fun
 
 }])
 
-nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 'LoverRegistryService', function($scope, $state, $stateParams, LoverRegistryService) {
-  document.title = 'nono - scheduling'; //set the page title
+mimicApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 'LoverRegistryService', function($scope, $state, $stateParams, LoverRegistryService) {
+
   $scope.navigation = true;
   $scope.googleLogin = false;
 
@@ -628,13 +628,13 @@ nonoApp.controller('SchedulingController', ['$scope', '$state', '$stateParams', 
       });
 }])
 
-nonoApp.controller('ConfirmationController', ['$scope', 'LoverRegistryService', function($scope,LoverRegistryService) {
-  document.title = 'nono - confirmation'; //set the page title
+mimicApp.controller('ConfirmationController', ['$scope', 'LoverRegistryService', function($scope,LoverRegistryService) {
+
   $scope.date = LoverRegistryService.userDate.date;
 }])
 
-nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
-  document.title = 'nono - itinerary'; //set the page title
+mimicApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
+
   $.getJSON('../api/itinerary/' + LoverRegistryService.userId)
       .success(function(data){
         $scope.dates = data;
@@ -704,8 +704,8 @@ nonoApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', fun
 
 }])
 
-nonoApp.controller('ContactController', ['$scope','LoverRegistryService', function($scope,LoverRegistryService) {
-  document.title = 'nono - contact'; //set the page title
+mimicApp.controller('ContactController', ['$scope','LoverRegistryService', function($scope,LoverRegistryService) {
+
   $scope.return = false;
   $('#submitContact').click(function(){
     //push the message to the utility that sends email
