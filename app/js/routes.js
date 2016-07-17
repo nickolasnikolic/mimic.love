@@ -6,7 +6,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
         .state('homenotlogged', {
           url: '/',
           templateUrl: 'templates/home.html',
-          controller: 'HomeController',
+          //controller: 'HomeController', //todo controllers are shut down in routes temp
           onEnter: function($state) {
             console.log('home');
           }
@@ -15,7 +15,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
         .state('profilenotlogged', {
           url: '/profile/submit',
           templateUrl: 'templates/profile.html',
-          controller: 'ProfileController',
+          //controller: 'ProfileController',
           onEnter: function($state) {
             console.log('profile');
           }
@@ -24,7 +24,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('contact', {
         url: '/contact',
         templateUrl: 'templates/contact.html',
-        controller: 'ContactController',
+        //controller: 'ContactController',
         onEnter: function($state) {
           console.log('contact');
         }
@@ -33,7 +33,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('profilelogged', {
         url: '/profile/update',
         templateUrl: 'templates/profile.html',
-        controller: 'ProfileUpdateController',
+        //controller: 'ProfileUpdateController',
         onEnter: function($state) {
           console.log('profile.update');
         }
@@ -42,7 +42,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('selectionlogged', {
         url: '/selection',
         templateUrl: 'templates/selection.html',
-        controller: 'SelectionController',
+        //controller: 'SelectionController',
         onEnter: function($state) {
           console.log('selection');
           //if the credentials are not set
@@ -53,7 +53,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('schedulinglogged', {
         url: '/scheduling/:loveInterest',
         templateUrl: 'templates/scheduling.html',
-        controller: 'SchedulingController',
+        //controller: 'SchedulingController',
         onEnter: function($state) {
           console.log('scheduling');
         }
@@ -62,7 +62,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('confirmationlogged', {
         url: '/confirmation',
         templateUrl: 'templates/confirmation.html',
-        controller: 'ConfirmationController',
+        //controller: 'ConfirmationController',
         onEnter: function($state) {
           console.log('confirmation');
         }
@@ -71,7 +71,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('itinerarylogged', {
         url: '/itinerary',
         templateUrl: 'templates/itinerary.html',
-        controller: 'ItineraryController',
+        //controller: 'ItineraryController',
         onEnter: function($state) {
           console.log('itinerary');
         }
@@ -80,7 +80,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('ratinglogged', {
         url: '/rating',
         templateUrl: 'templates/itinerary.html',
-        controller: 'RatingController',
+        //controller: 'RatingController',
         onEnter: function($state) {
           console.log('rating');
         }
@@ -89,7 +89,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
       .state('blog', {
         url: '/blog',
         templateUrl: 'templates/blog.html',
-        controller: 'BlogController',
+        //controller: 'BlogController',
         onEnter: function($state) {
           console.log('blog');
         }
@@ -99,7 +99,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
           .state('postjob', {
             url: '/post-job',
             templateUrl: 'templates/post-job.html',
-            controller: 'PostJobController',
+            //controller: 'PostJobController',
             onEnter: function($state) {
               console.log('post-job');
             }
@@ -109,7 +109,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
           .state('findjob', {
             url: '/find-job',
             templateUrl: 'templates/find-job.html',
-            controller: 'FindJobController',
+            //controller: 'FindJobController',
             onEnter: function($state) {
               console.log('find-job');
             }
@@ -118,7 +118,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
           .state('talent', {
             url: '/talent',
             templateUrl: 'templates/talent.html',
-            controller: 'TalentController',
+            //controller: 'TalentController',
             onEnter: function($state) {
               console.log('talent');
             }
@@ -127,7 +127,7 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
           .state('faq', {
             url: '/faq',
             templateUrl: 'templates/faq.html',
-            controller: 'FaqController',
+            //controller: 'FaqController',
             onEnter: function($state) {
               console.log('faq');
             }
