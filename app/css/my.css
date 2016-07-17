@@ -21,7 +21,9 @@ nav{
 section > div.shell{
   margin-top: 13em;
 }
-
+section > div.shell.closeUpTop{
+  margin-top: 1em;
+}
 article.testimonials{
   margin-bottom: 3em;
 }
