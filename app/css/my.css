@@ -9,3 +9,8 @@ section > div.shell{
 article.testimonials{
   margin-bottom: 3em;
 }
+
+.want-bg{
+  background-image: url("../images/AdobeStock_82132782.jpeg");
+  background-size: cover;
+}
