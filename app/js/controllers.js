@@ -3,35 +3,9 @@ mimicApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryServic
   $scope.googleLogin = true;
   $scope.frozen = false;
 
-  //get credentials of google api
-  hello.init({
-    google: '804584206642-ebd59rsin0i8v18k5j2r9nladke54pve.apps.googleusercontent.com'
-  });
-  //react to login press
-  hello.on('auth.login', function(auth) {
-
     //set the google login to be false
     $scope.googleLogin = false;
 
-  	// Call user information, for the given network
-  	hello(auth.network).api('/me').then(function(resource) {
-      //check the email against the database
-      LoverRegistryService.userEmail = resource.email; //quick push it into registry before it escapes...
-      $.getJSON( '../api/email/' + resource.email, function( response ){
-
-        if(response[0].user_id){
-          LoverRegistryService.userId = response[0].user_id; //same for this user
-          if(response[0].frozen > 0){
-            $scope.frozen = response[0].frozen;
-            return $state.go('homenotlogged');
-          }
-          $state.go( 'selectionlogged' );
-          $scope.navigation = true;
-        }else{
-          $state.go( 'profilenotlogged' );
-        }
-      } );
-  	});
   });
   //redirect to /selection
 
