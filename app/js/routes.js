@@ -141,5 +141,13 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
               console.log('faq');
             }
           })
+          .state('apply', {
+            url: '/apply',
+            templateUrl: 'templates/apply.html',
+            //controller: 'FaqController',
+            onEnter: function($state) {
+              console.log('apply');
+            }
+          })
     }
   ]);
