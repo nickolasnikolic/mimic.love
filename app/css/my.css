@@ -10,8 +10,8 @@ article.testimonials{
   margin-bottom: 3em;
 }
 
-nav{
-  background-color: rgba(255,255,255,0.75) !important;
+.rd-navbar-default.rd-navbar-light {
+  background-color: rgba(255,255,255,0.3);
 }
 
 .want-bg{
