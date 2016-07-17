@@ -33,7 +33,9 @@ article.testimonials{
   background-attachment: fixed;
   background-blend-mode: screen;
 }
-
+.spaceAboveAndBelow{
+  margin: 3em 0em;
+}
 .needsToMoveMuchLower{
   position: relative;
   top: 25em;
