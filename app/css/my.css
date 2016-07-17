@@ -5,3 +5,7 @@ nav{
 section > div.shell{
   margin-top: 13em;
 }
+
+article.testimonials{
+  margin-bottom: 3em;
+}
