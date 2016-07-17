@@ -2,8 +2,6 @@ mimicApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryServic
   //initial settings
   $scope.googleLogin = true;
   $scope.frozen = false;
-  $scope.home = $state.is( 'home' );
-  console.log($scope.home);
 
   //get credentials of google api
   hello.init({
