@@ -6,7 +6,6 @@ mimicApp.controller('IndexController', ['$scope', '$state', 'LoverRegistryServic
     //set the google login to be false
     $scope.googleLogin = false;
 
-  });
   //redirect to /selection
 
   //react to situation where entry point is not authorized
