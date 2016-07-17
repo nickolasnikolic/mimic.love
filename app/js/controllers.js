@@ -28,7 +28,6 @@ mimicApp.controller('SchedulingController', ['$scope', '$state', '$stateParams',
 
 mimicApp.controller('ConfirmationController', ['$scope', 'LoverRegistryService', function($scope,LoverRegistryService) {
 
-  $scope.date = LoverRegistryService.userDate.date;
 }])
 
 mimicApp.controller('ItineraryController', ['$scope', 'LoverRegistryService', function($scope, LoverRegistryService) {
