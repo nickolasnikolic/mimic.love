@@ -707,7 +707,7 @@ a?"xs":100>a?"sm":200>a?"md":800>a?"lg":"xlg"};d.prototype.createDOM=function(a)
           }
           return $anchor;
         } else {
-          links = $('.rd-navbar-nav a[href^="#"]').get();
+          links = $('.rd-navbar-nav a[href^="#//"]').get();
           for (i in links) {
             link = links[i];
             $link = $(link);
