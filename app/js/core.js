@@ -201,36 +201,747 @@ a?"xs":100>a?"sm":200>a?"md":800>a?"lg":"xlg"};d.prototype.createDOM=function(a)
  * @version      4.1.1
  */
 !function(a,b){"function"==typeof define&&define.amd?define(b):"object"==typeof exports?module.exports=b():a.PhotoSwipeUI_Default=b()}(this,function(){"use strict";var a=function(a,b){var c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v=this,w=!1,x=!0,y=!0,z={barsSize:{top:44,bottom:"auto"},closeElClasses:["item","caption","zoom-wrap","ui","top-bar"],timeToIdle:4e3,timeToIdleOutside:1e3,loadingIndicatorDelay:1e3,addCaptionHTMLFn:function(a,b){return a.title?(b.children[0].innerHTML=a.title,!0):(b.children[0].innerHTML="",!1)},closeEl:!0,captionEl:!1,fullscreenEl:!0,zoomEl:!0,shareEl:!0,counterEl:!0,arrowEl:!0,preloaderEl:!0,tapToClose:!1,tapToToggleControls:!0,clickToCloseNonZoomable:!0,shareButtons:[{id:"facebook",label:"Share on Facebook",url:"https://www.facebook.com/sharer/sharer.php?u={{url}}"},{id:"twitter",label:"Tweet",url:"https://twitter.com/intent/tweet?text={{text}}&url={{url}}"},{id:"pinterest",label:"Pin it",url:"http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}"},{id:"download",label:"Download image",url:"{{raw_image_url}}",download:!0}],getImageURLForShare:function(){return a.currItem.src||""},getPageURLForShare:function(){return window.location.href},getTextForShare:function(){return a.currItem.title||""},indexIndicatorSep:" / ",fitControlsWidth:1200},A=function(a){if(r)return!0;a=a||window.event,q.timeToIdle&&q.mouseUsed&&!k&&K();for(var c,d,e=a.target||a.srcElement,f=e.getAttribute("class")||"",g=0;g<S.length;g++)c=S[g],c.onTap&&f.indexOf("pswp__"+c.name)>-1&&(c.onTap(),d=!0);if(d){a.stopPropagation&&a.stopPropagation(),r=!0;var h=b.features.isOldAndroid?600:30;s=setTimeout(function(){r=!1},h)}},B=function(){return!a.likelyTouchDevice||q.mouseUsed||screen.width>q.fitControlsWidth},C=function(a,c,d){b[(d?"add":"remove")+"Class"](a,"pswp__"+c)},D=function(){var a=1===q.getNumItemsFn();a!==p&&(C(d,"ui--one-slide",a),p=a)},E=function(){C(i,"share-modal--hidden",y)},F=function(){return y=!y,y?(b.removeClass(i,"pswp__share-modal--fade-in"),setTimeout(function(){y&&E()},300)):(E(),setTimeout(function(){y||b.addClass(i,"pswp__share-modal--fade-in")},30)),y||H(),!1},G=function(b){b=b||window.event;var c=b.target||b.srcElement;return a.shout("shareLinkClick",b,c),c.href?c.hasAttribute("download")?!0:(window.open(c.href,"pswp_share","scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=550,height=420,top=100,left="+(window.screen?Math.round(screen.width/2-275):100)),y||F(),!1):!1},H=function(){for(var a,b,c,d,e,f="",g=0;g<q.shareButtons.length;g++)a=q.shareButtons[g],c=q.getImageURLForShare(a),d=q.getPageURLForShare(a),e=q.getTextForShare(a),b=a.url.replace("{{url}}",encodeURIComponent(d)).replace("{{image_url}}",encodeURIComponent(c)).replace("{{raw_image_url}}",c).replace("{{text}}",encodeURIComponent(e)),f+='<a href="'+b+'" target="_blank" class="pswp__share--'+a.id+'"'+(a.download?"download":"")+">"+a.label+"</a>",q.parseShareButtonOut&&(f=q.parseShareButtonOut(a,f));i.children[0].innerHTML=f,i.children[0].onclick=G},I=function(a){for(var c=0;c<q.closeElClasses.length;c++)if(b.hasClass(a,"pswp__"+q.closeElClasses[c]))return!0},J=0,K=function(){clearTimeout(u),J=0,k&&v.setIdle(!1)},L=function(a){a=a?a:window.event;var b=a.relatedTarget||a.toElement;b&&"HTML"!==b.nodeName||(clearTimeout(u),u=setTimeout(function(){v.setIdle(!0)},q.timeToIdleOutside))},M=function(){q.fullscreenEl&&!b.features.isOldAndroid&&(c||(c=v.getFullscreenAPI()),c?(b.bind(document,c.eventK,v.updateFullscreen),v.updateFullscreen(),b.addClass(a.template,"pswp--supports-fs")):b.removeClass(a.template,"pswp--supports-fs"))},N=function(){q.preloaderEl&&(O(!0),l("beforeChange",function(){clearTimeout(o),o=setTimeout(function(){a.currItem&&a.currItem.loading?(!a.allowProgressiveImg()||a.currItem.img&&!a.currItem.img.naturalWidth)&&O(!1):O(!0)},q.loadingIndicatorDelay)}),l("imageLoadComplete",function(b,c){a.currItem===c&&O(!0)}))},O=function(a){n!==a&&(C(m,"preloader--active",!a),n=a)},P=function(a){var c=a.vGap;if(B()){var g=q.barsSize;if(q.captionEl&&"auto"===g.bottom)if(f||(f=b.createEl("pswp__caption pswp__caption--fake"),f.appendChild(b.createEl("pswp__caption__center")),d.insertBefore(f,e),b.addClass(d,"pswp__ui--fit")),q.addCaptionHTMLFn(a,f,!0)){var h=f.clientHeight;c.bottom=parseInt(h,10)||44}else c.bottom=g.top;else c.bottom="auto"===g.bottom?0:g.bottom;c.top=g.top}else c.top=c.bottom=0},Q=function(){q.timeToIdle&&l("mouseUsed",function(){b.bind(document,"mousemove",K),b.bind(document,"mouseout",L),t=setInterval(function(){J++,2===J&&v.setIdle(!0)},q.timeToIdle/2)})},R=function(){l("onVerticalDrag",function(a){x&&.95>a?v.hideControls():!x&&a>=.95&&v.showControls()});var a;l("onPinchClose",function(b){x&&.9>b?(v.hideControls(),a=!0):a&&!x&&b>.9&&v.showControls()}),l("zoomGestureEnded",function(){a=!1,a&&!x&&v.showControls()})},S=[{name:"caption",option:"captionEl",onInit:function(a){e=a}},{name:"share-modal",option:"shareEl",onInit:function(a){i=a},onTap:function(){F()}},{name:"button--share",option:"shareEl",onInit:function(a){h=a},onTap:function(){F()}},{name:"button--zoom",option:"zoomEl",onTap:a.toggleDesktopZoom},{name:"counter",option:"counterEl",onInit:function(a){g=a}},{name:"button--close",option:"closeEl",onTap:a.close},{name:"button--arrow--left",option:"arrowEl",onTap:a.prev},{name:"button--arrow--right",option:"arrowEl",onTap:a.next},{name:"button--fs",option:"fullscreenEl",onTap:function(){c.isFullscreen()?c.exit():c.enter()}},{name:"preloader",option:"preloaderEl",onInit:function(a){m=a}}],T=function(){var a,c,e,f=function(d){if(d)for(var f=d.length,g=0;f>g;g++){a=d[g],c=a.className;for(var h=0;h<S.length;h++)e=S[h],c.indexOf("pswp__"+e.name)>-1&&(q[e.option]?(b.removeClass(a,"pswp__element--disabled"),e.onInit&&e.onInit(a)):b.addClass(a,"pswp__element--disabled"))}};f(d.children);var g=b.getChildByClass(d,"pswp__top-bar");g&&f(g.children)};v.init=function(){b.extend(a.options,z,!0),q=a.options,d=b.getChildByClass(a.scrollWrap,"pswp__ui"),l=a.listen,R(),l("beforeChange",v.update),l("doubleTap",function(b){var c=a.currItem.initialZoomLevel;a.getZoomLevel()!==c?a.zoomTo(c,b,333):a.zoomTo(q.getDoubleTapZoom(!1,a.currItem),b,333)}),l("preventDragEvent",function(a,b,c){var d=a.target||a.srcElement;d&&d.getAttribute("class")&&a.type.indexOf("mouse")>-1&&(d.getAttribute("class").indexOf("__caption")>0||/(SMALL|STRONG|EM)/i.test(d.tagName))&&(c.prevent=!1)}),l("bindEvents",function(){b.bind(d,"pswpTap click",A),b.bind(a.scrollWrap,"pswpTap",v.onGlobalTap),a.likelyTouchDevice||b.bind(a.scrollWrap,"mouseover",v.onMouseOver)}),l("unbindEvents",function(){y||F(),t&&clearInterval(t),b.unbind(document,"mouseout",L),b.unbind(document,"mousemove",K),b.unbind(d,"pswpTap click",A),b.unbind(a.scrollWrap,"pswpTap",v.onGlobalTap),b.unbind(a.scrollWrap,"mouseover",v.onMouseOver),c&&(b.unbind(document,c.eventK,v.updateFullscreen),c.isFullscreen()&&(q.hideAnimationDuration=0,c.exit()),c=null)}),l("destroy",function(){q.captionEl&&(f&&d.removeChild(f),b.removeClass(e,"pswp__caption--empty")),i&&(i.children[0].onclick=null),b.removeClass(d,"pswp__ui--over-close"),b.addClass(d,"pswp__ui--hidden"),v.setIdle(!1)}),q.showAnimationDuration||b.removeClass(d,"pswp__ui--hidden"),l("initialZoomIn",function(){q.showAnimationDuration&&b.removeClass(d,"pswp__ui--hidden")}),l("initialZoomOut",function(){b.addClass(d,"pswp__ui--hidden")}),l("parseVerticalMargin",P),T(),q.shareEl&&h&&i&&(y=!0),D(),Q(),M(),N()},v.setIdle=function(a){k=a,C(d,"ui--idle",a)},v.update=function(){x&&a.currItem?(v.updateIndexIndicator(),q.captionEl&&(q.addCaptionHTMLFn(a.currItem,e),C(e,"caption--empty",!a.currItem.title)),w=!0):w=!1,y||F(),D()},v.updateFullscreen=function(d){d&&setTimeout(function(){a.setScrollOffset(0,b.getScrollY())},50),b[(c.isFullscreen()?"add":"remove")+"Class"](a.template,"pswp--fs")},v.updateIndexIndicator=function(){q.counterEl&&(g.innerHTML=a.getCurrentIndex()+1+q.indexIndicatorSep+q.getNumItemsFn())},v.onGlobalTap=function(c){c=c||window.event;var d=c.target||c.srcElement;if(!r)if(c.detail&&"mouse"===c.detail.pointerType){if(I(d))return void a.close();b.hasClass(d,"pswp__img")&&(1===a.getZoomLevel()&&a.getZoomLevel()<=a.currItem.fitRatio?q.clickToCloseNonZoomable&&a.close():a.toggleDesktopZoom(c.detail.releasePoint))}else if(q.tapToToggleControls&&(x?v.hideControls():v.showControls()),q.tapToClose&&(b.hasClass(d,"pswp__img")||I(d)))return void a.close()},v.onMouseOver=function(a){a=a||window.event;var b=a.target||a.srcElement;C(d,"ui--over-close",I(b))},v.hideControls=function(){b.addClass(d,"pswp__ui--hidden"),x=!1},v.showControls=function(){x=!0,w||v.update(),b.removeClass(d,"pswp__ui--hidden")},v.supportsFullscreen=function(){var a=document;return!!(a.exitFullscreen||a.mozCancelFullScreen||a.webkitExitFullscreen||a.msExitFullscreen)},v.getFullscreenAPI=function(){var b,c=document.documentElement,d="fullscreenchange";return c.requestFullscreen?b={enterK:"requestFullscreen",exitK:"exitFullscreen",elementK:"fullscreenElement",eventK:d}:c.mozRequestFullScreen?b={enterK:"mozRequestFullScreen",exitK:"mozCancelFullScreen",elementK:"mozFullScreenElement",eventK:"moz"+d}:c.webkitRequestFullscreen?b={enterK:"webkitRequestFullscreen",exitK:"webkitExitFullscreen",elementK:"webkitFullscreenElement",eventK:"webkit"+d}:c.msRequestFullscreen&&(b={enterK:"msRequestFullscreen",exitK:"msExitFullscreen",elementK:"msFullscreenElement",eventK:"MSFullscreenChange"}),b&&(b.enter=function(){return j=q.closeOnScroll,q.closeOnScroll=!1,"webkitRequestFullscreen"!==this.enterK?a.template[this.enterK]():void a.template[this.enterK](Element.ALLOW_KEYBOARD_INPUT)},b.exit=function(){return q.closeOnScroll=j,document[this.exitK]()},b.isFullscreen=function(){return document[this.elementK]}),b}};return a});
+
 /**
  * @module       RD Navbar
  * @author       Evgeniy Gusarov
  * @see          https://ua.linkedin.com/pub/evgeniy-gusarov/8a/a40/54a
- * @version      2.1.6
+ * @version      2.1.7
  */
-(function(){var m;m="ontouchstart"in window;(function(d,p,l){var n;n=function(){function c(a,b){this.options=d.extend(!1,{},this.Defaults,b);this.$element=d(a);this.$clone=null;this.$win=d(l);this.$doc=d(p);this.currentLayout=this.options.layout;this.loaded=!1;this.focusOnHover=this.options.focusOnHover;this.isStuck=this.cloneTimer=this.focusTimer=!1;this.initialize()}c.prototype.Defaults={layout:"rd-navbar-static",deviceLayout:"rd-navbar-fixed",focusOnHover:!0,focusOnHoverTimeout:800,linkedElements:["html"],
-  domAppend:!0,stickUp:!0,stickUpClone:!0,stickUpOffset:"100%",anchorNavSpeed:400,anchorNavOffset:0,anchorNavEasing:"swing",autoHeight:!0,responsive:{0:{layout:"rd-navbar-fixed",deviceLayout:"rd-navbar-fixed",focusOnHover:!1,stickUp:!1},992:{layout:"rd-navbar-static",deviceLayout:"rd-navbar-static",focusOnHover:!0,stickUp:!0}},callbacks:{onToggleSwitch:!1,onToggleClose:!1,onDomAppend:!1,onDropdownOver:!1,onDropdownOut:!1,onDropdownToggle:!1,onDropdownClose:!1,onStuck:!1,onUnstuck:!1,onAnchorChange:!1}};
-  c.prototype.initialize=function(){this.$element.addClass("rd-navbar").addClass(this.options.layout);m&&this.$element.addClass("rd-navbar--is-touch");this.setDataAPI(this);this.options.domAppend&&this.createNav(this);this.options.stickUpClone&&this.createClone(this);this.applyHandlers(this);this.offset=this.$element.offset().top;this.height=this.$element.outerHeight();this.loaded=!0;return this};c.prototype.resize=function(a,b){var e,g;g=m?a.getOption("deviceLayout"):a.getOption("layout");e=a.$element.add(a.$clone);
-    g===a.currentLayout&&a.loaded||(a.switchClass(e,a.currentLayout,g),null!=a.options.linkedElements&&d.grep(a.options.linkedElements,function(b,e){return a.switchClass(b,a.currentLayout+"-linked",g+"-linked")}),a.currentLayout=g);a.focusOnHover=a.getOption("focusOnHover");return a};c.prototype.stickUp=function(a,b){var e,g,f,c;g=a.getOption("stickUp");e=a.$doc.scrollTop();c=null!=a.$clone?a.$clone:a.$element;f=a.getOption("stickUpOffset");f="string"===typeof f?0<f.indexOf("%")?parseFloat(f)*a.height/
-  100:parseFloat(f):f;if(g){if(e>=f&&!a.isStuck||e<f&&a.isStuck)if(a.$element.add(a.$clone).find("[data-rd-navbar-toggle]").each(function(){d.proxy(a.closeToggle,this)(a,!1)}).end().find(".rd-navbar-submenu").removeClass("opened").removeClass("focus"),e>=f&&!a.isStuck)"resize"===b.type?a.switchClass(c,"","rd-navbar--is-stuck"):c.addClass("rd-navbar--is-stuck"),a.isStuck=!0,a.options.callbacks.onStuck&&a.options.callbacks.onStuck.call(a);else{if("resize"===b.type)a.switchClass(c,"rd-navbar--is-stuck",
-    "");else c.removeClass("rd-navbar--is-stuck").one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd",d.proxy(a.resizeWrap,a,b));a.isStuck=!1;a.options.callbacks.onUnstuck&&a.options.callbacks.onUnstuck.call(a)}}else a.isStuck&&(a.switchClass(c,"rd-navbar--is-stuck",""),a.isStuck=!1,a.resizeWrap(b));return a};c.prototype.resizeWrap=function(a){var b;if(null==this.$clone&&!this.isStuck){b=this.$element.parent();if(this.getOption("autoHeight"))return this.height=this.$element.outerHeight(),
-    "resize"===a.type?(b.addClass("rd-navbar--no-transition").css("height",this.height),b[0].offsetHeight,b.removeClass("rd-navbar--no-transition")):b.css("height",this.height);b.css("height","auto")}};c.prototype.createNav=function(a){a.$element.find(".rd-navbar-dropdown, .rd-navbar-megamenu").each(function(){var a,e;a=d(this);e=this.getBoundingClientRect();e.left+a.outerWidth()>=l.innerWidth-10?this.className+=" rd-navbar-open-left":10>=e.left-a.outerWidth()&&(this.className+=" rd-navbar-open-right");
-    return a.hasClass("rd-navbar-megamenu")?a.parent().addClass("rd-navbar--has-megamenu"):a.parent().addClass("rd-navbar--has-dropdown")}).parents("li").addClass("rd-navbar-submenu").append(d("<span/>",{"class":"rd-navbar-submenu-toggle"}));a.options.callbacks.onDomAppend&&a.options.callbacks.onDomAppend.call(this);return a};c.prototype.createClone=function(a){a.$clone=a.$element.clone().insertAfter(a.$element).addClass("rd-navbar--is-clone");return a};c.prototype.closeToggle=function(a,b){var e,c,f;
-    e=d(b.target);c=!1;b.target!==this&&!e.parents("[data-rd-navbar-toggle]").length&&(f=this.getAttribute("data-rd-navbar-toggle"))&&(e=d(this).parents("body").find(f).add(d(this).parents(".rd-navbar")[0]),e.each(function(){if(!c)return c=!0===(b.target===this||d.contains(this,b.target))}),c||(e.add(this).removeClass("active"),a.options.callbacks.onToggleClose&&a.options.callbacks.onToggleClose.call(this,a)));return this};c.prototype.switchToggle=function(a,b){var e;b.preventDefault();if(e=this.getAttribute("data-rd-navbar-toggle"))d("[data-rd-navbar-toggle]").not(this).each(function(){var a;
-    if(a=this.getAttribute("data-rd-navbar-toggle"))return d(this).parents("body").find(a).add(this).add(-1<d.inArray(".rd-navbar",a.split(/\s*,\s*/i))?d(this).parents("body")[0]:!1).removeClass("active")}),d(this).parents("body").find(e).add(this).add(-1<d.inArray(".rd-navbar",e.split(/\s*,\s*/i))?d(this).parents(".rd-navbar")[0]:!1).toggleClass("active"),a.options.callbacks.onToggleSwitch&&a.options.callbacks.onToggleSwitch.call(this,a);return this};c.prototype.dropdownOver=function(a,b){var e;a.focusOnHover&&
-  (e=d(this),clearTimeout(b),e.addClass("focus").siblings().removeClass("opened").each(a.dropdownUnfocus),a.options.callbacks.onDropdownOver&&a.options.callbacks.onDropdownOver.call(this,a));return this};c.prototype.dropdownTouch=function(a,b){var e,c;e=d(this);clearTimeout(b);if(a.focusOnHover){c=!1;e.hasClass("focus")&&(c=!0);if(!c)return e.addClass("focus").siblings().removeClass("opened").each(a.dropdownUnfocus),!1;a.options.callbacks.onDropdownOver&&a.options.callbacks.onDropdownOver.call(this,
-    a)}return this};c.prototype.dropdownOut=function(a,b){var e;a.focusOnHover&&(e=d(this),e.one("mouseenter.navbar",function(){return clearTimeout(b)}),clearTimeout(b),b=setTimeout(d.proxy(a.dropdownUnfocus,this,a),a.options.focusOnHoverTimeout),a.options.callbacks.onDropdownOut&&a.options.callbacks.onDropdownOut.call(this,a));return this};c.prototype.dropdownUnfocus=function(a){d(this).find("li.focus").add(this).removeClass("focus");return this};c.prototype.dropdownClose=function(a,b){var e;b.target===
-  this||d(b.target).parents(".rd-navbar-submenu").length||(e=d(this),e.find("li.focus").add(this).removeClass("focus").removeClass("opened"),a.options.callbacks.onDropdownClose&&a.options.callbacks.onDropdownClose.call(this,a));return this};c.prototype.dropdownToggle=function(a){d(this).toggleClass("opened").siblings().removeClass("opened");a.options.callbacks.onDropdownToggle&&a.options.callbacks.onDropdownToggle.call(this,a);return this};c.prototype.goToAnchor=function(a,b){var e,c;c=this.hash;e=
-    d(c);e.length&&(b.preventDefault(),d("html, body").stop().animate({scrollTop:e.offset().top+a.getOption("anchorNavOffset")+1},a.getOption("anchorNavSpeed"),a.getOption("anchorNavEasing"),function(){return a.changeAnchor(c)}));return this};c.prototype.activateAnchor=function(a){var b,e,c,f,h,k;k=this.$doc.scrollTop();h=this.$win.height();b=this.$doc.height();a=this.getOption("anchorNavOffset");if(k+h>b-50)return b=d('[data-type="anchor"]').last(),b.length&&b.offset().top>=k&&(f="#"+b.attr("id"),e=
-    d('.rd-navbar-nav a[href^="'+f+'"]').parent(),e.hasClass("active")||(e.addClass("active").siblings().removeClass("active"),this.options.callbacks.onAnchorChange&&this.options.callbacks.onAnchorChange.call(b[0],this))),b;h=d('.rd-navbar-nav a[href^="#"]').get();for(e in h)b=h[e],c=d(b),f=c.attr("href"),b=d(f),b.length&&b.offset().top+a<=k&&b.offset().top+b.outerHeight()>k&&(c.parent().addClass("active").siblings().removeClass("active"),this.options.callbacks.onAnchorChange&&this.options.callbacks.onAnchorChange.call(b[0],
-    this));return null};c.prototype.getAnchor=function(){return history&&history.state?history.state.id:null};c.prototype.changeAnchor=function(a){history&&(history.state?history.state.id!==a?history.replaceState({anchorId:a},null,a):history.pushState({anchorId:a},null,a):history.pushState({anchorId:a},null,a));return this};c.prototype.applyHandlers=function(a){null!=a.options.responsive&&a.$win.on("resize.navbar",d.proxy(a.resize,a.$win[0],a)).on("resize.navbar",d.proxy(a.resizeWrap,a)).on("resize.navbar",
-    d.proxy(a.stickUp,null!=a.$clone?a.$clone:a.$element,a)).on("orientationchange.navbar",d.proxy(a.resize,a.$win[0],a)).trigger("resize.navbar");a.$doc.on("scroll.navbar",d.proxy(a.stickUp,null!=a.$clone?a.$clone:a.$element,a)).on("scroll.navbar",d.proxy(a.activateAnchor,a));a.$element.add(a.$clone).find("[data-rd-navbar-toggle]").each(function(){var b;b=d(this);b.on("click",d.proxy(a.switchToggle,this,a));return b.parents("body").on("click",d.proxy(a.closeToggle,this,a))});a.$element.add(a.$clone).find(".rd-navbar-submenu").each(function(){var b,
-    e;b=d(this);e=b.parents(".rd-navbar--is-clone").length?a.cloneTimer:a.focusTimer;b.on("mouseleave.navbar",d.proxy(a.dropdownOut,this,a,e));b.find("> a").on("mouseenter.navbar",d.proxy(a.dropdownOver,this,a,e));b.find("> a").on("touchstart.navbar",d.proxy(a.dropdownTouch,this,a,e));b.find("> .rd-navbar-submenu-toggle").on("click",d.proxy(a.dropdownToggle,this,a));return b.parents("body").on("click",d.proxy(a.dropdownClose,this,a))});a.$element.add(a.$clone).find('.rd-navbar-nav a[href^="#"]').each(function(){return d(this).on("click",
-    d.proxy(a.goToAnchor,this,a))});return a};c.prototype.switchClass=function(a,b,e){a=a instanceof jQuery?a:d(a);a.addClass("rd-navbar--no-transition").removeClass(b).addClass(e);a[0].offsetHeight;return a.removeClass("rd-navbar--no-transition")};c.prototype.setDataAPI=function(a){var b,e,d,c;a=["-","-xs-","-sm-","-md-","-lg-"];c=[0,480,768,992,1200];b=e=0;for(d=c.length;e<d;b=++e)this.$element.attr("data"+a[b]+"layout")&&(this.options.responsive[c[b]]||(this.options.responsive[c[b]]={}),this.options.responsive[c[b]].layout=
-    this.$element.attr("data"+a[b]+"layout")),this.$element.attr("data"+a[b]+"device-layout")&&(this.options.responsive[c[b]]||(this.options.responsive[c[b]]={}),this.options.responsive[c[b]].deviceLayout=this.$element.attr("data"+a[b]+"device-layout")),this.$element.attr("data"+a[b]+"hover-on")&&(this.options.responsive[c[b]]||(this.options.responsive[c[b]]={}),this.options.responsive[c[b]].focusOnHover="true"===this.$element.attr("data"+a[b]+"hover-on")),this.$element.attr("data"+a[b]+"stick-up")&&
-  (this.options.responsive[c[b]]||(this.options.responsive[c[b]]={}),this.options.responsive[c[b]].stickUp="true"===this.$element.attr("data"+a[b]+"stick-up")),this.$element.attr("data"+a[b]+"auto-height")&&(this.options.responsive[c[b]]||(this.options.responsive[c[b]]={}),this.options.responsive[c[b]].autoHeight="true"===this.$element.attr("data"+a[b]+"auto-height")),this.$element.attr("data"+a[b]+"stick-up-offset")&&(this.options.responsive[c[b]]||(this.options.responsive[c[b]]={}),this.options.responsive[c[b]].stickUpOffset=
-    this.$element.attr("data"+a[b]+"stick-up-offset"))};c.prototype.getOption=function(a){var b,c;for(b in this.options.responsive)b<=l.innerWidth&&(c=b);return null!=this.options.responsive&&null!=this.options.responsive[c][a]?this.options.responsive[c][a]:this.options[a]};return c}();d.fn.extend({RDNavbar:function(c){var a;a=d(this);if(!a.data("RDNavbar"))return a.data("RDNavbar",new n(this,c))}});return l.RDNavbar=n})(window.jQuery,document,window);"undefined"!==typeof module&&null!==module?module.exports=
-  window.RDNavbar:"function"===typeof define&&define.amd&&define(["jquery"],function(){return window.RDNavbar})}).call(this);
 
+(function() {
+  var isTouch;
+
+  isTouch = "ontouchstart" in window;
+
+  (function($, document, window) {
+
+    /**
+     * Creates a RDNavbar.
+     * @class RDNavbar.
+     * @public
+     * @param {HTMLElement} element - The element to create the RDNavbar for.
+     * @param {Object} [options] - The options
+     */
+    var RDNavbar;
+    RDNavbar = (function() {
+
+      /**
+       * Default options for RDNavbar.
+       * @protected
+       */
+      RDNavbar.prototype.Defaults = {
+        layout: 'rd-navbar-static',
+        deviceLayout: 'rd-navbar-fixed',
+        focusOnHover: true,
+        focusOnHoverTimeout: 800,
+        linkedElements: ["html"],
+        domAppend: true,
+        stickUp: true,
+        stickUpClone: true,
+        stickUpOffset: '100%',
+        anchorNavSpeed: 400,
+        anchorNavOffset: 0,
+        anchorNavEasing: 'swing',
+        autoHeight: true,
+        responsive: {
+          0: {
+            layout: "rd-navbar-fixed",
+            deviceLayout: "rd-navbar-fixed",
+            focusOnHover: false,
+            stickUp: false
+          },
+          992: {
+            layout: "rd-navbar-static",
+            deviceLayout: "rd-navbar-static",
+            focusOnHover: true,
+            stickUp: true
+          }
+        },
+        callbacks: {
+          onToggleSwitch: false,
+          onToggleClose: false,
+          onDomAppend: false,
+          onDropdownOver: false,
+          onDropdownOut: false,
+          onDropdownToggle: false,
+          onDropdownClose: false,
+          onStuck: false,
+          onUnstuck: false,
+          onAnchorChange: false
+        }
+      };
+
+      function RDNavbar(element, options) {
+
+        /**
+         * Current options set
+         * @public
+         */
+        this.options = $.extend(false, {}, this.Defaults, options);
+
+        /**
+         * Plugin element
+         * @public
+         */
+        this.$element = $(element);
+
+        /**
+         * Plugin element clone
+         * @public
+         */
+        this.$clone = null;
+
+        /**
+         * Additional references
+         * @public
+         */
+        this.$win = $(window);
+        this.$doc = $(document);
+        this.currentLayout = this.options.layout;
+        this.loaded = false;
+        this.focusOnHover = this.options.focusOnHover;
+        this.focusTimer = false;
+        this.cloneTimer = false;
+        this.isStuck = false;
+        this.initialize();
+      }
+
+
+      /**
+       * Initializes the RDNavbar.
+       * @protected
+       */
+
+      RDNavbar.prototype.initialize = function() {
+        var ctx;
+        ctx = this;
+        ctx.$element.addClass("rd-navbar").addClass(ctx.options.layout);
+        if (isTouch) {
+          ctx.$element.addClass("rd-navbar--is-touch");
+        }
+        ctx.setDataAPI(ctx);
+        if (ctx.options.domAppend) {
+          ctx.createNav(ctx);
+        }
+        if (ctx.options.stickUpClone) {
+          ctx.createClone(ctx);
+        }
+        ctx.$element.addClass('rd-navbar-original');
+        ctx.addAdditionalClassToToggles('.rd-navbar-original', 'toggle-original', 'toggle-original-elements');
+        ctx.applyHandlers(ctx);
+        ctx.offset = ctx.$element.offset().top;
+        ctx.height = ctx.$element.outerHeight();
+        ctx.loaded = true;
+        return ctx;
+      };
+
+
+      /**
+       * Changes {ctx.$element} layout basing on screen resolution
+       * @protected
+       */
+
+      RDNavbar.prototype.resize = function(ctx, e) {
+        var targetElement, targetLayout;
+        targetLayout = isTouch ? ctx.getOption('deviceLayout') : ctx.getOption('layout');
+        targetElement = ctx.$element.add(ctx.$clone);
+        if (targetLayout !== ctx.currentLayout || !ctx.loaded) {
+          ctx.switchClass(targetElement, ctx.currentLayout, targetLayout);
+          if (ctx.options.linkedElements != null) {
+            $.grep(ctx.options.linkedElements, function(link, index) {
+              return ctx.switchClass(link, ctx.currentLayout + '-linked', targetLayout + '-linked');
+            });
+          }
+          ctx.currentLayout = targetLayout;
+        }
+        ctx.focusOnHover = ctx.getOption('focusOnHover');
+        return ctx;
+      };
+
+
+      /**
+       * Toggles bar stickup on scroll
+       * @protected
+       */
+
+      RDNavbar.prototype.stickUp = function(ctx, e) {
+        var scrollTop, stickUp, stickUpOffset, targetElement, threshold;
+        stickUp = ctx.getOption("stickUp");
+        scrollTop = ctx.$doc.scrollTop();
+        targetElement = ctx.$clone != null ? ctx.$clone : ctx.$element;
+        stickUpOffset = ctx.getOption('stickUpOffset');
+        threshold = (typeof stickUpOffset === 'string' ? (stickUpOffset.indexOf('%') > 0 ? parseFloat(stickUpOffset) * ctx.height / 100 : parseFloat(stickUpOffset)) : stickUpOffset);
+        if (stickUp) {
+          if ((scrollTop >= threshold && !ctx.isStuck) || (scrollTop < threshold && ctx.isStuck)) {
+            ctx.$element.add(ctx.$clone).find('[data-rd-navbar-toggle]').each(function() {
+              $.proxy(ctx.closeToggle, this)(ctx, false);
+            }).end().find('.rd-navbar-submenu').removeClass('opened').removeClass('focus');
+            if (scrollTop >= threshold && !ctx.isStuck && !ctx.$element.hasClass('rd-navbar-fixed')) {
+              if (e.type === 'resize') {
+                ctx.switchClass(targetElement, '', 'rd-navbar--is-stuck');
+              } else {
+                targetElement.addClass('rd-navbar--is-stuck');
+              }
+              ctx.isStuck = true;
+              if (ctx.options.callbacks.onStuck) {
+                ctx.options.callbacks.onStuck.call(ctx);
+              }
+            } else {
+              if (e.type === 'resize') {
+                ctx.switchClass(targetElement, 'rd-navbar--is-stuck', '');
+              } else {
+                targetElement.removeClass('rd-navbar--is-stuck').one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', $.proxy(ctx.resizeWrap, ctx, e));
+              }
+              ctx.isStuck = false;
+              if (ctx.options.callbacks.onUnstuck) {
+                ctx.options.callbacks.onUnstuck.call(ctx);
+              }
+            }
+          }
+        } else {
+          if (ctx.isStuck) {
+            ctx.switchClass(targetElement, 'rd-navbar--is-stuck', '');
+            ctx.isStuck = false;
+            ctx.resizeWrap(e);
+          }
+        }
+        return ctx;
+      };
+
+
+      /**
+       * Resizes an external wrap of navbar
+       * @protected
+       */
+
+      RDNavbar.prototype.resizeWrap = function(e) {
+        var $wrap, ctx;
+        ctx = this;
+        if ((ctx.$clone == null) && !ctx.isStuck) {
+          $wrap = ctx.$element.parent();
+          if (!ctx.getOption('autoHeight')) {
+            $wrap.css('height', 'auto');
+            return;
+          }
+          ctx.height = ctx.$element.outerHeight();
+          if (e.type === 'resize') {
+            $wrap.addClass('rd-navbar--no-transition').css('height', ctx.height);
+            $wrap[0].offsetHeight;
+            return $wrap.removeClass('rd-navbar--no-transition');
+          } else {
+            return $wrap.css('height', ctx.height);
+          }
+        }
+      };
+
+
+      /**
+       * Creates additional DOM for navigation functionality
+       * @protected
+       */
+
+      RDNavbar.prototype.createNav = function(ctx) {
+        ctx.$element.find('.rd-navbar-dropdown, .rd-navbar-megamenu').each(function() {
+          var $this, rect;
+          $this = $(this);
+          rect = this.getBoundingClientRect();
+          if ((rect.left + $this.outerWidth()) >= window.innerWidth - 10) {
+            this.className += ' rd-navbar-open-left';
+          } else if ((rect.left - $this.outerWidth()) <= 10) {
+            this.className += ' rd-navbar-open-right';
+          }
+          if ($this.hasClass('rd-navbar-megamenu')) {
+            return $this.parent().addClass('rd-navbar--has-megamenu');
+          } else {
+            return $this.parent().addClass('rd-navbar--has-dropdown');
+          }
+        }).parents("li").addClass("rd-navbar-submenu").append($('<span/>', {
+          'class': 'rd-navbar-submenu-toggle'
+        }));
+        if (ctx.options.callbacks.onDomAppend) {
+          ctx.options.callbacks.onDomAppend.call(this);
+        }
+        return ctx;
+      };
+
+
+      /**
+       * Creates navbar clone to stick up
+       * @protected
+       */
+
+      RDNavbar.prototype.createClone = function(ctx) {
+        ctx.$clone = ctx.$element.clone().insertAfter(ctx.$element).addClass('rd-navbar--is-clone');
+        ctx.addAdditionalClassToToggles('.rd-navbar--is-clone', 'toggle-cloned', 'toggle-cloned-elements');
+        return ctx;
+      };
+
+
+      /**
+       * Closes all toggles on outside click of each item
+       * @protected
+       */
+
+      RDNavbar.prototype.closeToggle = function(ctx, e) {
+        var $items, $target, additionalToggleElClass, additionalToogleClass, collapse, linkedElements, needClose;
+        $target = $(e.target);
+        collapse = false;
+        linkedElements = this.getAttribute('data-rd-navbar-toggle');
+        if (ctx.options.stickUpClone && ctx.isStuck) {
+          additionalToogleClass = '.toggle-cloned';
+          additionalToggleElClass = '.toggle-cloned-elements';
+          needClose = !$target.hasClass('toggle-cloned');
+        } else {
+          additionalToogleClass = '.toggle-original';
+          additionalToggleElClass = '.toggle-original-elements';
+          needClose = !$target.hasClass('toggle-original');
+        }
+        if (e.target !== this && !$target.parents(additionalToogleClass + '[data-rd-navbar-toggle]').length && !$target.parents(additionalToggleElClass).length && linkedElements && needClose) {
+          $items = $(this).parents('body').find(linkedElements).add($(this).parents('.rd-navbar')[0]);
+          $items.each(function() {
+            if (!collapse) {
+              return collapse = (e.target === this || $.contains(this, e.target)) === true;
+            }
+          });
+          if (!collapse) {
+            $items.add(this).removeClass('active');
+            if (ctx.options.callbacks.onToggleClose) {
+              ctx.options.callbacks.onToggleClose.call(this, ctx);
+            }
+          }
+        }
+        return this;
+      };
+
+
+      /**
+       * Switches toggle
+       * @protected
+       */
+
+      RDNavbar.prototype.switchToggle = function(ctx, e) {
+        var additionalToggleElClass, linkedElements, navbarClass;
+        e.preventDefault();
+        if ($(this).hasClass('toggle-cloned')) {
+          navbarClass = '.rd-navbar--is-clone';
+          additionalToggleElClass = '.toggle-cloned-elements';
+        } else {
+          navbarClass = '.rd-navbar-original';
+          additionalToggleElClass = '.toggle-original-elements';
+        }
+        if (linkedElements = this.getAttribute('data-rd-navbar-toggle')) {
+          $(navbarClass + ' [data-rd-navbar-toggle]').not(this).each(function() {
+            var deactivateElements;
+            if (deactivateElements = this.getAttribute('data-rd-navbar-toggle')) {
+              return $(this).parents('body').find(navbarClass + ' ' + deactivateElements + additionalToggleElClass).add(this).add($.inArray('.rd-navbar', deactivateElements.split(/\s*,\s*/i)) > -1 ? $(this).parents('body')[0] : false).removeClass('active');
+            }
+          });
+          $(this).parents('body').find(navbarClass + ' ' + linkedElements + additionalToggleElClass).add(this).add($.inArray('.rd-navbar', linkedElements.split(/\s*,\s*/i)) > -1 ? $(this).parents('.rd-navbar')[0] : false).toggleClass('active');
+        }
+        if (ctx.options.callbacks.onToggleSwitch) {
+          ctx.options.callbacks.onToggleSwitch.call(this, ctx);
+        }
+        return this;
+      };
+
+
+      /**
+       * Triggers submenu popup to be shown on mouseover
+       * @protected
+       */
+
+      RDNavbar.prototype.dropdownOver = function(ctx, timer) {
+        var $this;
+        if (ctx.focusOnHover) {
+          $this = $(this);
+          clearTimeout(timer);
+          $this.addClass('focus').siblings().removeClass('opened').each(ctx.dropdownUnfocus);
+          if (ctx.options.callbacks.onDropdownOver) {
+            ctx.options.callbacks.onDropdownOver.call(this, ctx);
+          }
+        }
+        return this;
+      };
+
+
+      /**
+       * Triggers submenu popup to be shown on mouseover
+       * @protected
+       */
+
+      RDNavbar.prototype.dropdownTouch = function(ctx, timer) {
+        var $this, hasFocus;
+        $this = $(this);
+        clearTimeout(timer);
+        if (ctx.focusOnHover) {
+          hasFocus = false;
+          if ($this.hasClass('focus')) {
+            hasFocus = true;
+          }
+          if (!hasFocus) {
+            $this.addClass('focus').siblings().removeClass('opened').each(ctx.dropdownUnfocus);
+            return false;
+          }
+          if (ctx.options.callbacks.onDropdownOver) {
+            ctx.options.callbacks.onDropdownOver.call(this, ctx);
+          }
+        }
+        return this;
+      };
+
+
+      /**
+       * Triggers submenu popop to be hidden on mouseout
+       * @protected
+       */
+
+      RDNavbar.prototype.dropdownOut = function(ctx, timer) {
+        var $this;
+        if (ctx.focusOnHover) {
+          $this = $(this);
+          $this.one('mouseenter.navbar', function() {
+            return clearTimeout(timer);
+          });
+          clearTimeout(timer);
+          timer = setTimeout($.proxy(ctx.dropdownUnfocus, this, ctx), ctx.options.focusOnHoverTimeout);
+          if (ctx.options.callbacks.onDropdownOut) {
+            ctx.options.callbacks.onDropdownOut.call(this, ctx);
+          }
+        }
+        return this;
+      };
+
+
+      /**
+       * Removes a focus from submenu
+       * @protected
+       */
+
+      RDNavbar.prototype.dropdownUnfocus = function(ctx) {
+        var $this;
+        $this = $(this);
+        $this.find('li.focus').add(this).removeClass('focus');
+        return this;
+      };
+
+
+      /**
+       * Closes submenu
+       * @protected
+       */
+
+      RDNavbar.prototype.dropdownClose = function(ctx, e) {
+        var $this;
+        if (e.target !== this && !$(e.target).parents('.rd-navbar-submenu').length) {
+          $this = $(this);
+          $this.find('li.focus').add(this).removeClass('focus').removeClass('opened');
+          if (ctx.options.callbacks.onDropdownClose) {
+            ctx.options.callbacks.onDropdownClose.call(this, ctx);
+          }
+        }
+        return this;
+      };
+
+
+      /**
+       * Toggles submenu popup to be shown on trigger click
+       * @protected
+       */
+
+      RDNavbar.prototype.dropdownToggle = function(ctx) {
+        $(this).toggleClass('opened').siblings().removeClass('opened');
+        if (ctx.options.callbacks.onDropdownToggle) {
+          ctx.options.callbacks.onDropdownToggle.call(this, ctx);
+        }
+        return this;
+      };
+
+
+      /**
+       * Scrolls the page to triggered anchor
+       * @protected
+       */
+
+      RDNavbar.prototype.goToAnchor = function(ctx, e) {
+        var $anchor, hash;
+        hash = this.hash;
+        $anchor = $(hash);
+        if ($anchor.length) {
+          e.preventDefault();
+          $('html, body').stop().animate({
+            'scrollTop': $anchor.offset().top + ctx.getOption('anchorNavOffset') + 1
+          }, ctx.getOption('anchorNavSpeed'), ctx.getOption('anchorNavEasing'), function() {
+            return ctx.changeAnchor(hash);
+          });
+        }
+        return this;
+      };
+
+
+      /**
+       * Highlight an active anchor
+       * @protected
+       */
+
+      RDNavbar.prototype.activateAnchor = function(e) {
+        var $anchor, $item, $link, ctx, docHeight, hash, i, link, links, navOffset, scrollTop, winHeight;
+        ctx = this;
+        scrollTop = ctx.$doc.scrollTop();
+        winHeight = ctx.$win.height();
+        docHeight = ctx.$doc.height();
+        navOffset = ctx.getOption('anchorNavOffset');
+        if (scrollTop + winHeight > docHeight - 50) {
+          $anchor = $('[data-type="anchor"]').last();
+          if ($anchor.length) {
+            if ($anchor.offset().top >= scrollTop) {
+              hash = '#' + $anchor.attr("id");
+              $item = $('.rd-navbar-nav a[href^="' + hash + '"]').parent();
+              if (!$item.hasClass('active')) {
+                $item.addClass('active').siblings().removeClass('active');
+                if (ctx.options.callbacks.onAnchorChange) {
+                  ctx.options.callbacks.onAnchorChange.call($anchor[0], ctx);
+                }
+              }
+            }
+          }
+          return $anchor;
+        } else {
+          links = $('.rd-navbar-nav a[href^="#"]').get();
+          for (i in links) {
+            link = links[i];
+            $link = $(link);
+            hash = $link.attr('href');
+            $anchor = $(hash);
+            if ($anchor.length) {
+              if ($anchor.offset().top + navOffset <= scrollTop && $anchor.offset().top + $anchor.outerHeight() > scrollTop) {
+                $link.parent().addClass('active').siblings().removeClass('active');
+                if (ctx.options.callbacks.onAnchorChange) {
+                  ctx.options.callbacks.onAnchorChange.call($anchor[0], ctx);
+                }
+              }
+            }
+          }
+        }
+        return null;
+      };
+
+
+      /**
+       * Returns current anchor
+       * @protected
+       */
+
+      RDNavbar.prototype.getAnchor = function() {
+        if (history) {
+          if (history.state) {
+            return history.state.id;
+          }
+        }
+        return null;
+      };
+
+
+      /**
+       * Changes current page anchor
+       * @protected
+       */
+
+      RDNavbar.prototype.changeAnchor = function(hash) {
+        if (history) {
+          if (history.state) {
+            if (history.state.id !== hash) {
+              history.replaceState({
+                'anchorId': hash
+              }, null, hash);
+            } else {
+              history.pushState({
+                'anchorId': hash
+              }, null, hash);
+            }
+          } else {
+            history.pushState({
+              'anchorId': hash
+            }, null, hash);
+          }
+        }
+        return this;
+      };
+
+
+      /**
+       * Applies all JS event handlers
+       * @protected
+       */
+
+      RDNavbar.prototype.applyHandlers = function(ctx) {
+        if (ctx.options.responsive != null) {
+          ctx.$win.on('resize.navbar', $.proxy(ctx.resize, ctx.$win[0], ctx)).on('resize.navbar', $.proxy(ctx.resizeWrap, ctx)).on('resize.navbar', $.proxy(ctx.stickUp, (ctx.$clone != null ? ctx.$clone : ctx.$element), ctx)).on('orientationchange.navbar', $.proxy(ctx.resize, ctx.$win[0], ctx)).trigger('resize.navbar');
+        }
+        ctx.$doc.on('scroll.navbar', $.proxy(ctx.stickUp, (ctx.$clone != null ? ctx.$clone : ctx.$element), ctx)).on('scroll.navbar', $.proxy(ctx.activateAnchor, ctx));
+        ctx.$element.add(ctx.$clone).find('[data-rd-navbar-toggle]').each(function() {
+          var $this;
+          $this = $(this);
+          $this.on('click', $.proxy(ctx.switchToggle, this, ctx));
+          return $this.parents('body').on('click', $.proxy(ctx.closeToggle, this, ctx));
+        });
+        ctx.$element.add(ctx.$clone).find('.rd-navbar-submenu').each(function() {
+          var $this, timer;
+          $this = $(this);
+          timer = $this.parents(".rd-navbar--is-clone").length ? ctx.cloneTimer : ctx.focusTimer;
+          $this.on('mouseleave.navbar', $.proxy(ctx.dropdownOut, this, ctx, timer));
+          $this.find('> a').on('mouseenter.navbar', $.proxy(ctx.dropdownOver, this, ctx, timer));
+          $this.find('> a').on('touchstart.navbar', $.proxy(ctx.dropdownTouch, this, ctx, timer));
+          $this.find('> .rd-navbar-submenu-toggle').on('click', $.proxy(ctx.dropdownToggle, this, ctx));
+          return $this.parents('body').on('click', $.proxy(ctx.dropdownClose, this, ctx));
+        });
+        ctx.$element.add(ctx.$clone).find('.rd-navbar-nav a[href^="#"]').each(function() {
+          return $(this).on('click', $.proxy(ctx.goToAnchor, this, ctx));
+        });
+        return ctx;
+      };
+
+
+      /**
+       * Switches classes of elements without transition
+       * @protected
+       */
+
+      RDNavbar.prototype.switchClass = function(element, before, after) {
+        var obj;
+        obj = element instanceof jQuery ? element : $(element);
+        obj.addClass('rd-navbar--no-transition').removeClass(before).addClass(after);
+        obj[0].offsetHeight;
+        return obj.removeClass('rd-navbar--no-transition');
+      };
+
+
+      /**
+       * Check data attributes and write responsive object
+       * @protected
+       */
+
+      RDNavbar.prototype.setDataAPI = function(ctx) {
+        var aliaces, i, j, len, value, values;
+        aliaces = ["-", "-xs-", "-sm-", "-md-", "-lg-", "-xl-"];
+        values = [0, 480, 768, 992, 1200, 1800];
+        for (i = j = 0, len = values.length; j < len; i = ++j) {
+          value = values[i];
+          if (this.$element.attr('data' + aliaces[i] + 'layout')) {
+            if (!this.options.responsive[values[i]]) {
+              this.options.responsive[values[i]] = {};
+            }
+            this.options.responsive[values[i]].layout = this.$element.attr('data' + aliaces[i] + 'layout');
+          }
+          if (this.$element.attr('data' + aliaces[i] + 'device-layout')) {
+            if (!this.options.responsive[values[i]]) {
+              this.options.responsive[values[i]] = {};
+            }
+            this.options.responsive[values[i]]['deviceLayout'] = this.$element.attr('data' + aliaces[i] + 'device-layout');
+          }
+          if (this.$element.attr('data' + aliaces[i] + 'hover-on')) {
+            if (!this.options.responsive[values[i]]) {
+              this.options.responsive[values[i]] = {};
+            }
+            this.options.responsive[values[i]]['focusOnHover'] = this.$element.attr('data' + aliaces[i] + 'hover-on') === 'true';
+          }
+          if (this.$element.attr('data' + aliaces[i] + 'stick-up')) {
+            if (!this.options.responsive[values[i]]) {
+              this.options.responsive[values[i]] = {};
+            }
+            this.options.responsive[values[i]]['stickUp'] = this.$element.attr('data' + aliaces[i] + 'stick-up') === 'true';
+          }
+          if (this.$element.attr('data' + aliaces[i] + 'auto-height')) {
+            if (!this.options.responsive[values[i]]) {
+              this.options.responsive[values[i]] = {};
+            }
+            this.options.responsive[values[i]]['autoHeight'] = this.$element.attr('data' + aliaces[i] + 'auto-height') === 'true';
+          }
+          if (this.$element.attr('data' + aliaces[i] + 'stick-up-offset')) {
+            if (!this.options.responsive[values[i]]) {
+              this.options.responsive[values[i]] = {};
+            }
+            this.options.responsive[values[i]]['stickUpOffset'] = this.$element.attr('data' + aliaces[i] + 'stick-up-offset');
+          }
+        }
+      };
+
+
+      /**
+       * Gets specific option of plugin
+       * @protected
+       */
+
+      RDNavbar.prototype.getOption = function(key) {
+        var point, targetPoint;
+        for (point in this.options.responsive) {
+          if (point <= window.innerWidth) {
+            targetPoint = point;
+          }
+        }
+        if ((this.options.responsive != null) && (this.options.responsive[targetPoint][key] != null)) {
+          return this.options.responsive[targetPoint][key];
+        } else {
+          return this.options[key];
+        }
+      };
+
+
+      /**
+       * Add additional class to navbar toggles to identify it when navbar is cloned
+       * @protected
+       */
+
+      RDNavbar.prototype.addAdditionalClassToToggles = function(navbarClass, toggleAdditionalClass, toggleElAdditionalClass) {
+        return $(navbarClass).find('[data-rd-navbar-toggle]').each(function() {
+          var toggleElement;
+          $(this).addClass(toggleAdditionalClass);
+          toggleElement = this.getAttribute('data-rd-navbar-toggle');
+          return $(this).parents('body').find(navbarClass).find(toggleElement).addClass(toggleElAdditionalClass);
+        });
+      };
+
+      return RDNavbar;
+
+    })();
+
+    /**
+     * The jQuery Plugin for the RD Navbar
+     * @public
+     */
+    $.fn.extend({
+      RDNavbar: function(options) {
+        var $this;
+        $this = $(this);
+        if (!$this.data('RDNavbar')) {
+          return $this.data('RDNavbar', new RDNavbar(this, options));
+        }
+      }
+
+      /**
+       * RD Navbar window export
+       * @public
+       */
+    });
+    return window.RDNavbar = RDNavbar;
+  })(window.jQuery, document, window);
+
+
+  /**
+   * The Plugin AMD export
+   * @public
+   */
+
+  if (typeof module !== "undefined" && module !== null) {
+    module.exports = window.RDNavbar;
+  } else if (typeof define === 'function' && define.amd) {
+    define(["jquery"], function() {
+      'use strict';
+      return window.RDNavbar;
+    });
+  }
+
+}).call(this);
 
 
 
