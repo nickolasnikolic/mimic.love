@@ -695,7 +695,7 @@ a?"xs":100>a?"sm":200>a?"md":800>a?"lg":"xlg"};d.prototype.createDOM=function(a)
           $anchor = $('[data-type="anchor"]').last();
           if ($anchor.length) {
             if ($anchor.offset().top >= scrollTop) {
-              hash = '#' + $anchor.attr("id");
+              hash = '#/' + $anchor.attr("id");
               $item = $('.rd-navbar-nav a[href^="' + hash + '"]').parent();
               if (!$item.hasClass('active')) {
                 $item.addClass('active').siblings().removeClass('active');
