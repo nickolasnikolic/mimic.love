@@ -10,6 +10,10 @@ article.testimonials{
   margin-bottom: 3em;
 }
 
+nav{
+  background-color: rgba(255,255,255,0.75);
+}
+
 .want-bg{
   background-image: url("../images/AdobeStock_82132782.jpeg");
   background-size: cover;
