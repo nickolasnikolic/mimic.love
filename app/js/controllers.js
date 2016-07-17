@@ -10,7 +10,7 @@ mimicApp.controller('ProfileController', ['$scope', '$state', 'LoverRegistryServ
 
 }])
 
-mimicApp.controller('ProfileUpdateController', ['$scope', '$state','LoverRegistryService',  function($scope, $state, LoverRegistryService) {
+mimicApp.controller('PostJobController', ['$scope', '$state','LoverRegistryService',  function($scope, $state, LoverRegistryService) {
 
 }])
 
