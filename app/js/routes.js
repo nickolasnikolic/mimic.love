@@ -123,7 +123,14 @@ var mimicApp = angular.module('mimic', ['ui.router', 'ngSanitize', 'angular.filt
               console.log('talent');
             }
           })
-
+          .state('services', {
+            url: '/services',
+            templateUrl: 'templates/services.html',
+            //controller: 'TalentController',
+            onEnter: function($state) {
+              console.log('services');
+            }
+          })
           .state('detail', {
             url: '/talent/:detailId',
             templateUrl: 'templates/detail.html',
