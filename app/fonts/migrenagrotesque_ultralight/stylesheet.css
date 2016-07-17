@@ -1,0 +1,37 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2016 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      BORUTTA
+ * License URL: https://www.fontspring.com/licenses/borutta/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'migrena_grotesqueultralight';
+    src: url('migrena_grotesque-ultralight-webfont.eot');
+    src: url('migrena_grotesque-ultralight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('migrena_grotesque-ultralight-webfont.woff2') format('woff2'),
+         url('migrena_grotesque-ultralight-webfont.woff') format('woff'),
+         url('migrena_grotesque-ultralight-webfont.ttf') format('truetype'),
+         url('migrena_grotesque-ultralight-webfont.svg#migrena_grotesqueultralight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

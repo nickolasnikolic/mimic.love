@@ -1,3 +1,19 @@
+body{
+  font-family: 'migrena_grotesquelight';
+}
+
+strong{
+  font-family: 'migrena_grotesqueblack';
+}
+
+em{
+  font-family: 'migrena_grotesquelight_italic';
+}
+
+.page-loader{
+  font-family: 'minimobold';
+}
+
 nav{
   background-color: rgba(25,234,123,0.4);
 }
