@@ -17,6 +17,9 @@ $app->post('/message', function(){
         'subject' => 'A new message from mimic.love',
         'text'    => print_r($_POST)
     ));
+
+    header('Location: http://mimic.love');
+    exit();
 });
 
 
