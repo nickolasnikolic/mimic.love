@@ -8,7 +8,7 @@ $app = new \Slim\Slim();
 $app->post('/message', function(){
     //First, instantiate the SDK with your API credentials and define your domain.
     $mg = new Mailgun(getenv('MAILGUN_API_KEY'));
-    $domain = getenv('MAILGUN_DOMAIN');
+    $domain = 'mimic.love';//getenv('MAILGUN_DOMAIN');
 
     $message = implode('\n', $_POST);
 
