@@ -15,10 +15,10 @@ $app->post('/message', function(){
         'from'    => 'info@mimic.love',
         'to'      => 'nick@mimic.love',
         'subject' => 'A new message from mimic.love',
-        'text'    => 'test' //print_r($_POST)
+        'text'    => implode('\n',$_POST)
     ));
 
-    header('Location: http://mimic.love');
+    header('Location: http://mimic.love/app/#/');
     exit();
 });
 
