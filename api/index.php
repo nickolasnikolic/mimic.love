@@ -10,9 +10,7 @@ $app->post('/message', function(){
     $mg = new Mailgun(getenv('MAILGUN_API_KEY'));
     $domain = getenv('MAILGUN_DOMAIN');
 
-    print_r($_POST);
-
-    $message = implode('\n',$_POST);
+    $message = implode('\n', $_POST);
 
     //Now, compose and send your message.
     $mg->sendMessage($domain, array(
@@ -21,10 +19,6 @@ $app->post('/message', function(){
         'subject' => 'A new message from mimic.love',
         'text'    => $message
     ));
-
-    //header('Location: http://www.mimic.love/app/#/');
-    //exit();
-    echo $message; //testing
 });
 
 
