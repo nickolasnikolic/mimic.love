@@ -18,7 +18,7 @@ $app->post('/message', function(){
         'text'    => implode('\n',$_POST)
     ));
 
-    header('Location: http://mimic.love/app/#/');
+    header('Location: http://www.mimic.love/app/#/');
     exit();
 });
 
