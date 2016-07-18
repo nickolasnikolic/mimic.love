@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 use Mailgun\Mailgun;
 error_reporting(-1);//tell me stuff
 
