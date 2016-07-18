@@ -10,7 +10,7 @@ $app->post('/message', function(){
     $client = new \Http\Adapter\Guzzle6\Client();
 
     $mg = new Mailgun(getenv('MAILGUN_API_KEY'), $client);
-    $domain = 'mimic.love';//getenv('MAILGUN_DOMAIN');
+    $domain = getenv('MAILGUN_DOMAIN');
 
     $message = implode('\n', $_POST);
 
