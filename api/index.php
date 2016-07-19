@@ -6,13 +6,14 @@ error_reporting(-1);//tell me stuff
 $app = new \Slim\Slim();
 
 $app->post('/message', function(){
+    header('location: http://mimic.love'); // redirect then do the work
     //First, instantiate the SDK with your API credentials and define your domain.
     $client = new \Http\Adapter\Guzzle6\Client();
 
     $mg = new Mailgun(getenv('MAILGUN_API_KEY'), $client);
-    $domain = 'mimic.love'; //getenv('MAILGUN_DOMAIN');
+    $domain = 'mimic.love';
 
-    $message = print_r($_POST, true); //implode('\n', $_POST);
+    $message = print_r($_POST, true);
 
     //Now, compose and send your message.
     $mg->sendMessage($domain, array(
@@ -21,8 +22,6 @@ $app->post('/message', function(){
         'subject' => 'A new message from mimic.love',
         'text'    => $message
     ));
-
-    header('location: http://mimic.love');
 });
 
 
