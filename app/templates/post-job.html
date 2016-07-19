@@ -69,19 +69,11 @@
                             </div>
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-type" class="form-label form-label-outside text-sbold">Job Type</label>
-                                    <select id="post-job-type" data-placeholder="Select an option" name="jobType" data-minimum-results-for-search="Infinity" class="form-control">
-                                        <option>Full Time</option>
-                                        <option>Part Time</option>
-                                    </select>
+                                    <label for="post-job-hours" class="form-label form-label-outside text-sbold">Hours per week <span class="text-muted">(optional)</span></label>
+                                    <input id="post-job-hours" type="text" name="hours" data-constraints="@Required @IsNumeric" class="form-control">
                                 </div>
                             </div>
-                            <div class="cell-lg-12 offset-top-30 offset-md-top-20">
-                                <div class="form-group">
-                                    <label for="contact-me-message" class="form-label form-label-outside text-sbold">Description</label>
-                                    <textarea id="contact-me-message" name="description" data-constraints="@Required" style="height: 179px;" class="form-control"></textarea>
-                                </div>
-                            </div>
+
 
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
@@ -96,12 +88,13 @@
                                 </div>
                             </div>
 
-                            <div class="cell-md-6 offset-top-30">
+                            <div class="cell-lg-12 offset-top-30 offset-md-top-20">
                                 <div class="form-group">
-                                    <label for="post-job-hours" class="form-label form-label-outside text-sbold">Hours per week <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-hours" type="text" name="hours" data-constraints="@Required @IsNumeric" class="form-control">
+                                    <label for="contact-me-message" class="form-label form-label-outside text-sbold">Description</label>
+                                    <textarea id="contact-me-message" name="description" data-constraints="@Required" style="height: 179px;" class="form-control"></textarea>
                                 </div>
                             </div>
+
                         </div>
                         <div class="group group-xl offset-top-30 text-center text-md-left">
                             <button type="submit" class="btn btn-primary">Send</button>
