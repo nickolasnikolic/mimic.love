@@ -51,5 +51,7 @@ article.testimonials{
     background-attachment: fixed;
     background-blend-mode: screen;
   }
-  .needsToMoveMuchLower{}
+  .needsToMoveMuchLower{
+    position: static;
+  }
 }
