@@ -12,14 +12,14 @@ $app->post('/message', function(){
     $mg = new Mailgun(getenv('MAILGUN_API_KEY'), $client);
     $domain = 'mimic.love'; //getenv('MAILGUN_DOMAIN');
 
-    $message = implode('\n', $_POST);
+    //$message = implode('\n', $_POST);
 
     //Now, compose and send your message.
     $mg->sendMessage($domain, array(
         'from'    => 'info@mimic.love',
         'to'      => 'nick@mimic.love',
         'subject' => 'A new message from mimic.love',
-        'text'    => $message
+        'text'    => print_r($_POST)//$message
     ));
 
     header('location: http://mimic.love');
