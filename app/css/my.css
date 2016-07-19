@@ -47,4 +47,7 @@ article.testimonials{
   .want-bg{
     background-image: none;
   }
+  .needsToMoveMuchLower{
+    position: static;
+  }
 }
