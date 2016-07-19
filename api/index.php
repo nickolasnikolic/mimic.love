@@ -6,7 +6,7 @@ error_reporting(-1);//tell me stuff
 $app = new \Slim\Slim();
 
 $app->post('/message', function(){
-    header('location: http://mimic.love'); // redirect then do the work
+
     //First, instantiate the SDK with your API credentials and define your domain.
     $client = new \Http\Adapter\Guzzle6\Client();
 
@@ -22,6 +22,9 @@ $app->post('/message', function(){
         'subject' => 'A new message from mimic.love',
         'text'    => $message
     ));
+
+    header('location: http://mimic.love');//redirect
+    exit();
 });
 
 
