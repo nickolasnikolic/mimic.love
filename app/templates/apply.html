@@ -15,135 +15,95 @@
                     <!-- RD Mailform-->
                     <form method="post" action="../api/message" class="rd-mailform text-left offset-top-50">
                         <div class="range">
-                            <div class="cell-lg-12 offset-top-41">
-                                <h4>Personal Details</h4>
-                                <div>
-                                    <hr class="hr bg-gray">
+
+                            <div class="cell-md-6 offset-top-30">
+                                <div class="form-group">
+                                    <label for="apply-firstName" class="form-label form-label-outside text-sbold">First Name</label>
+                                    <input id="apply-firstName" type="text" name="firstName" data-constraints="@Required @Email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="cell-md-6 offset-top-30">
+                                <div class="form-group">
+                                    <label for="apply-lastName" class="form-label form-label-outside text-sbold">Last Name</label>
+                                    <input id="apply-lastName" type="text" name="lastName" data-constraints="@Required" class="form-control">
                                 </div>
                             </div>
 
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-firstName" class="form-label form-label-outside text-sbold">First Name</label>
-                                    <input id="post-job-firstName" type="text" name="firstName" data-constraints="@Required @Email" class="form-control">
+                                    <label for="apply-email" class="form-label form-label-outside text-sbold">Your Email</label>
+                                    <input id="apply-email" type="email" name="email" data-constraints="@Required @Email" class="form-control">
                                 </div>
                             </div>
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-lastName" class="form-label form-label-outside text-sbold">Last Name</label>
-                                    <input id="post-job-lastName" type="text" name="lastName" data-constraints="@Required" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-email" class="form-label form-label-outside text-sbold">Your Email</label>
-                                    <input id="post-job-email" type="email" name="email" data-constraints="@Required @Email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-last-name" class="form-label form-label-outside text-sbold">Job Title</label>
-                                    <input id="post-job-last-name" type="text" name="title" data-constraints="@Required" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-location" class="form-label form-label-outside text-sbold">Location <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-location" type="text" name="location" data-constraints="@Required" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-type" class="form-label form-label-outside text-sbold">Job Type</label>
-                                    <select id="post-job-type" data-placeholder="Select an option" data-minimum-results-for-search="Infinity" class="form-control">
-                                        <option>Full Time</option>
-                                        <option>Part Time</option>
+                                    <label for="apply-gender" class="form-label form-label-outside text-sbold">Gender</label>
+                                    <select id="apply-gender" data-placeholder="Select an option" data-minimum-results-for-search="Infinity" class="form-control">
+                                        <option>Female</option>
+                                        <option>Male</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-category" class="form-label form-label-outside text-sbold">Job Category</label>
-                                    <input id="post-job-category" type="text" name="category" data-constraints="@Required" class="form-control">
+                                    <label for="apply-location" class="form-label form-label-outside text-sbold">Location </label>
+                                    <input id="apply-location" type="text" name="location" data-constraints="@Required" class="form-control">
                                 </div>
                             </div>
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-tags" class="form-label form-label-outside text-sbold">Job Tags <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-tags" type="text" name="tags" data-constraints="@Required" class="form-control">
+                                    <label for="apply-zip" class="form-label form-label-outside text-sbold">Zip Code or Postal Code</label>
+                                    <input id="apply-zip" type="text" name="zip" data-constraints="@Required" class="form-control">
+                                </div>
+                            </div>
+                            <div class="cell-md-6 offset-top-30">
+                                <div class="form-group">
+                                    <label for="apply-category" class="form-label form-label-outside text-sbold">Job Category</label>
+                                    <select id="apply-category" data-placeholder="Select an option" name="jobCategory" data-minimum-results-for-search="Infinity" class="form-control">
+                                        <option>Any</option>
+                                        <option>Companionship and Friendship</option>
+                                        <option>Hugging and Cuddling</option>
+                                        <option>Kissing and Cuddling</option>
+                                        <option>Professional Spouse</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cell-md-6 offset-top-30">
+                                <div class="form-group">
+                                    <label for="apply-startDate" class="form-label form-label-outside text-sbold">Date You Can Start Work?</label>
+                                    <input id="apply-startDate" type="date" name="startDate" data-constraints="@Required" class="form-control">
                                 </div>
                             </div>
                             <div class="cell-lg-12 offset-top-30 offset-md-top-20">
                                 <div class="form-group">
-                                    <label for="contact-me-message" class="form-label form-label-outside text-sbold">Description</label>
-                                    <textarea id="contact-me-message" name="description" data-constraints="@Required" style="height: 179px;" class="form-control"></textarea>
+                                    <label for="apply-coverLetter" class="form-label form-label-outside text-sbold">Cover Letter</label>
+                                    <textarea id="apply-coverLetter" name="coverLetter" data-constraints="@Required" style="height: 179px;" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="cell-lg-12 offset-top-30 offset-md-top-20">
+                                <div class="form-group">
+                                    <label for="apply-resume" class="form-label form-label-outside text-sbold">Resume (or link to resume)</label>
+                                    <textarea id="apply-resume" name="resume" data-constraints="@Required" style="height: 179px;" class="form-control"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="cell-md-6 offset-top-30">
+                                <div class="form-group">
+                                    <label for="apply-minimum-rate" class="form-label form-label-outside text-sbold">Minimum Rate/h ($) <span class="text-muted">(optional)</span></label>
+                                    <input id="apply-minimum-rate" type="text" name="minimum-rate" data-constraints="@Required @IsNumeric" class="form-control">
                                 </div>
                             </div>
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-application" class="form-label form-label-outside text-sbold">Application Email/URL</label>
-                                    <input id="post-job-application" type="text" name="application" data-constraints="@Required" class="form-control">
+                                    <label for="apply-maximum-rate" class="form-label form-label-outside text-sbold">Maximum Rate/h ($) <span class="text-muted">(optional)</span></label>
+                                    <input id="apply-maximum-rate" type="text" name="maximum-rate" data-constraints="@Required @IsNumeric" class="form-control">
                                 </div>
                             </div>
+
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-minimum-rate" class="form-label form-label-outside text-sbold">Minimum Rate/h ($) <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-minimum-rate" type="text" name="minimum-rate" data-constraints="@Required @IsNumeric" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-maximum-rate" class="form-label form-label-outside text-sbold">Maximum Rate/h ($) <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-maximum-rate" type="text" name="maximum-rate" data-constraints="@Required @IsNumeric" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-minimum-salary" class="form-label form-label-outside text-sbold">Minimum Salary ($) <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-minimum-salary" type="text" name="minimum-salary" data-constraints="@Required @IsNumeric" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-maximum-salary" class="form-label form-label-outside text-sbold">Maximum Salary ($) <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-maximum-salary" type="text" name="maximum-salary" data-constraints="@Required @IsNumeric" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-hours" class="form-label form-label-outside text-sbold">Hours per week <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-hours" type="text" name="hours" data-constraints="@Required @IsNumeric" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-lg-12 offset-top-41">
-                                <h4>Company Details</h4>
-                                <div>
-                                    <hr class="hr bg-gray">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-company-name" class="form-label form-label-outside text-sbold">Company Name</label>
-                                    <input id="post-job-company-name" type="text" name="company-name" data-constraints="@Required" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-website" class="form-label form-label-outside text-sbold">Website <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-website" type="text" name="website" data-constraints="@Required" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-video" class="form-label form-label-outside text-sbold">Video <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-video" type="text" name="video" data-constraints="@Required" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-tagline" class="form-label form-label-outside text-sbold">Tagline <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-tagline" type="text" name="tagline" data-constraints="@Required" class="form-control">
+                                    <label for="apply-hours" class="form-label form-label-outside text-sbold">Hours per week?</label>
+                                    <input id="apply-hours" type="text" name="hours" data-constraints="@Required @IsNumeric" class="form-control">
                                 </div>
                             </div>
                         </div>
