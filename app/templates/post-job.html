@@ -38,8 +38,8 @@
                             </div>
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-title" class="form-label form-label-outside text-sbold">Job Title</label>
-                                    <input id="post-job-title" type="text" name="title" data-constraints="@Required" class="form-control">
+                                    <label for="post-job-phone" class="form-label form-label-outside text-sbold">Phone Number</label>
+                                    <input id="post-job-phone" type="text" name="phone" data-constraints="@Required" class="form-control">
                                 </div>
                             </div>
                             <div class="cell-md-6 offset-top-30">
@@ -48,12 +48,14 @@
                                     <input id="post-job-location" type="text" name="location" data-constraints="@Required" class="form-control">
                                 </div>
                             </div>
+
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
-                                    <label for="post-job-phone" class="form-label form-label-outside text-sbold">Phone Number</label>
-                                    <input id="post-job-phone" type="text" name="phone" data-constraints="@Required" class="form-control">
+                                    <label for="post-job-title" class="form-label form-label-outside text-sbold">Zip Code or Postal Code</label>
+                                    <input id="post-job-title" type="text" name="zip" data-constraints="@Required" class="form-control">
                                 </div>
                             </div>
+
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
                                     <label for="post-job-category" class="form-label form-label-outside text-sbold">Job Category</label>
@@ -80,12 +82,7 @@
                                     <textarea id="contact-me-message" name="description" data-constraints="@Required" style="height: 179px;" class="form-control"></textarea>
                                 </div>
                             </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-application" class="form-label form-label-outside text-sbold">Application Email/URL</label>
-                                    <input id="post-job-application" type="text" name="application" data-constraints="@Required" class="form-control">
-                                </div>
-                            </div>
+
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
                                     <label for="post-job-minimum-rate" class="form-label form-label-outside text-sbold">Minimum Rate/h ($) <span class="text-muted">(optional)</span></label>
@@ -98,18 +95,7 @@
                                     <input id="post-job-maximum-rate" type="text" name="maximum-rate" data-constraints="@Required @IsNumeric" class="form-control">
                                 </div>
                             </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-minimum-salary" class="form-label form-label-outside text-sbold">Minimum Salary ($) <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-minimum-salary" type="text" name="minimum-salary" data-constraints="@Required @IsNumeric" class="form-control">
-                                </div>
-                            </div>
-                            <div class="cell-md-6 offset-top-30">
-                                <div class="form-group">
-                                    <label for="post-job-maximum-salary" class="form-label form-label-outside text-sbold">Maximum Salary ($) <span class="text-muted">(optional)</span></label>
-                                    <input id="post-job-maximum-salary" type="text" name="maximum-salary" data-constraints="@Required @IsNumeric" class="form-control">
-                                </div>
-                            </div>
+
                             <div class="cell-md-6 offset-top-30">
                                 <div class="form-group">
                                     <label for="post-job-hours" class="form-label form-label-outside text-sbold">Hours per week <span class="text-muted">(optional)</span></label>
