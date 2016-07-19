@@ -42,3 +42,14 @@ article.testimonials{
   position: relative;
   top: 25em;
 }
+
+@media screen and (max-device-width: 768px){
+  .want-bg{
+    background-image: none;
+    background-size: cover;
+    background-position: top left;
+    background-attachment: fixed;
+    background-blend-mode: screen;
+  }
+  .needsToMoveMuchLower{}
+}
