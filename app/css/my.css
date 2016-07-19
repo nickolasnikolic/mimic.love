@@ -44,6 +44,9 @@ article.testimonials{
 }
 
 @media screen and (max-device-width: 768px){
+  section > div.shell{
+    margin-top: 1em;
+  }
   .want-bg{
     background-image: none;
   }
