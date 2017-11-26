@@ -50,7 +50,11 @@ article.testimonials{
   .want-bg{
     background-image: none;
   }
+  .big{
+    display: none;
+  }
+
   .needsToMoveMuchLower{
-    position: static;
+    position: inherit;
   }
 }
